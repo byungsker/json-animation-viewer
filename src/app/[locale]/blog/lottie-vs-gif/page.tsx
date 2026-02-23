@@ -1,28 +1,58 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
+import BlogPostJsonLd from '@/components/BlogPostJsonLd';
+import Breadcrumb from '@/components/Breadcrumb';
 
-export const metadata: Metadata = {
-  title: "Lottie vs GIF: Why Lottie Animations Are Better - JSON Animation Viewer",
-  description:
-    "A detailed comparison of Lottie and GIF animation formats. Compare file sizes, rendering quality, performance, interactivity, and developer experience with real-world benchmarks.",
-  alternates: {
-    canonical: "/blog/lottie-vs-gif",
-  },
-};
+export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
+  const t = await getTranslations({locale, namespace: 'metadata.lottieVsGif'});
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: `/${locale}/blog/lottie-vs-gif`,
+      languages: { en: '/en/blog/lottie-vs-gif', ko: '/ko/blog/lottie-vs-gif' },
+    },
+    openGraph: {
+      type: "article",
+      publishedTime: "2025-02-15T00:00:00Z",
+    },
+  };
+}
 
-export default function LottieVsGifPage() {
+export default async function LottieVsGifPage({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
+  setRequestLocale(locale);
+  const tc = await getTranslations('common');
+
   return (
     <div className="min-h-screen bg-gray-900">
       <div className="max-w-3xl mx-auto px-6 py-16">
+        <Breadcrumb
+          items={[
+            { name: locale === "ko" ? "홈" : "Home", href: "/" },
+            { name: locale === "ko" ? "블로그" : "Blog", href: "/blog" },
+            { name: "Lottie vs GIF", href: "/blog/lottie-vs-gif" },
+          ]}
+        />
+        <BlogPostJsonLd
+          title="Lottie vs GIF: Why Lottie Animations Are Better"
+          description="A detailed comparison of Lottie and GIF animation formats. Compare file sizes, rendering quality, performance, interactivity, and developer experience with real-world benchmarks."
+          datePublished="2025-02-15T00:00:00Z"
+          dateModified="2025-02-15T00:00:00Z"
+          slug="lottie-vs-gif"
+          locale={locale}
+        />
+
         <Link
           href="/blog"
           className="text-blue-400 hover:text-blue-300 text-sm mb-8 inline-block transition-colors"
         >
-          &larr; Back to Blog
+          &larr; {tc("backToBlog")}
         </Link>
 
         <article>
-          <time className="text-sm text-gray-500 block mb-4">February 15, 2025</time>
+          <time dateTime="2025-02-15" className="text-sm text-gray-500 block mb-4">February 15, 2025</time>
           <h1 className="text-4xl font-bold text-white mb-6">
             Lottie vs GIF: Why Lottie Animations Are Better
           </h1>
@@ -349,6 +379,22 @@ export default function LottieVsGifPage() {
             </section>
           </div>
         </article>
+
+        <aside className="mt-12 pt-8 border-t border-gray-700">
+          <h2 className="text-lg font-semibold text-white mb-4">Related Posts</h2>
+          <ul className="space-y-3">
+            <li>
+              <Link href="/blog/what-is-lottie" className="text-blue-400 hover:text-blue-300 transition-colors">
+                What is Lottie Animation? A Complete Guide
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog/best-lottie-resources" className="text-blue-400 hover:text-blue-300 transition-colors">
+                Best Lottie Animation Resources for Developers
+              </Link>
+            </li>
+          </ul>
+        </aside>
       </div>
     </div>
   );
