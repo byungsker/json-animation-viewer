@@ -221,6 +221,30 @@ export default function GuidePage() {
               to report bugs or request features.
             </p>
           </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-white mb-3">Related Resources</h2>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>
+                <Link href="/blog/what-is-lottie" className="text-blue-400 hover:underline">
+                  What is Lottie Animation?
+                </Link>{" "}
+                — A complete guide to the Lottie format.
+              </li>
+              <li>
+                <Link href="/blog/json-animation-tutorial" className="text-blue-400 hover:underline">
+                  JSON Animation Tutorial
+                </Link>{" "}
+                — From After Effects to Web.
+              </li>
+              <li>
+                <Link href="/about" className="text-blue-400 hover:underline">
+                  About JSON Animation Viewer
+                </Link>{" "}
+                — Learn about our tool and technology.
+              </li>
+            </ul>
+          </section>
         </div>
       </div>
     </div>

@@ -76,9 +76,6 @@ export const metadata: Metadata = {
     description: "Easily preview your JSON animations with our user-friendly JSON Animation Viewer.",
     images: ["/og-image.png"],
   },
-  verification: {
-    google: "google-site-verification-code",
-  },
   category: "technology",
 };
 

@@ -10,9 +10,57 @@ export const metadata: Metadata = {
   },
 };
 
+
+const faqItems = [
+  {
+    question: "What is JSON Animation Viewer?",
+    answer: "JSON Animation Viewer is a free, browser-based tool that lets you preview Lottie JSON animation files instantly. You can drag and drop a .json file onto the viewer or click to select one from your device. No installation, no sign-up, and no file uploads to any server."
+  },
+  {
+    question: "What is a Lottie animation?",
+    answer: "Lottie is an open-source animation format originally developed by Airbnb. Animations are created in tools like Adobe After Effects and exported as lightweight JSON files using the Bodymovin plugin."
+  },
+  {
+    question: "Is my animation data safe?",
+    answer: "Yes, completely. JSON Animation Viewer processes your files entirely within your browser using client-side JavaScript. Your animation files are never uploaded to any server."
+  },
+  {
+    question: "What file formats are supported?",
+    answer: "JSON Animation Viewer supports standard Lottie JSON files with the .json extension exported from Adobe After Effects using the Bodymovin plugin, LottieFiles, Haiku Animator, and Figma plugins."
+  },
+  {
+    question: "Is JSON Animation Viewer free?",
+    answer: "Yes, completely free with no hidden costs. There are no premium tiers, no usage limits, and no feature gates."
+  },
+];
+
+function FaqJsonLd() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
 export default function FAQPage() {
   return (
-    <div className="min-h-screen bg-gray-900">
+    <>
+      <FaqJsonLd />
+      <div className="min-h-screen bg-gray-900">
       <div className="max-w-3xl mx-auto px-6 py-16">
         <Link
           href="/"
@@ -264,6 +312,7 @@ export default function FAQPage() {
           </section>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
