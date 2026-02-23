@@ -1,29 +1,37 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import BlogPostJsonLd from "@/components/BlogPostJsonLd";
-import Breadcrumb from "@/components/Breadcrumb";
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
+import BlogPostJsonLd from '@/components/BlogPostJsonLd';
+import Breadcrumb from '@/components/Breadcrumb';
 
-export const metadata: Metadata = {
-  title: "Lottie vs GIF: Why Lottie Animations Are Better - JSON Animation Viewer",
-  description:
-    "A detailed comparison of Lottie and GIF animation formats. Compare file sizes, rendering quality, performance, interactivity, and developer experience with real-world benchmarks.",
-  alternates: {
-    canonical: "/blog/lottie-vs-gif",
-  },
-  openGraph: {
-    type: "article",
-    publishedTime: "2025-02-15T00:00:00Z",
-  },
-};
+export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
+  const t = await getTranslations({locale, namespace: 'metadata.lottieVsGif'});
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: `/${locale}/blog/lottie-vs-gif`,
+      languages: { en: '/en/blog/lottie-vs-gif', ko: '/ko/blog/lottie-vs-gif' },
+    },
+    openGraph: {
+      type: "article",
+      publishedTime: "2025-02-15T00:00:00Z",
+    },
+  };
+}
 
-export default function LottieVsGifPage() {
+export default async function LottieVsGifPage({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
+  setRequestLocale(locale);
+  const tc = await getTranslations('common');
+
   return (
     <div className="min-h-screen bg-gray-900">
       <div className="max-w-3xl mx-auto px-6 py-16">
         <Breadcrumb
           items={[
-            { name: "Home", href: "/" },
-            { name: "Blog", href: "/blog" },
+            { name: locale === "ko" ? "홈" : "Home", href: "/" },
+            { name: locale === "ko" ? "블로그" : "Blog", href: "/blog" },
             { name: "Lottie vs GIF", href: "/blog/lottie-vs-gif" },
           ]}
         />
@@ -33,13 +41,14 @@ export default function LottieVsGifPage() {
           datePublished="2025-02-15T00:00:00Z"
           dateModified="2025-02-15T00:00:00Z"
           slug="lottie-vs-gif"
+          locale={locale}
         />
 
         <Link
           href="/blog"
           className="text-blue-400 hover:text-blue-300 text-sm mb-8 inline-block transition-colors"
         >
-          &larr; Back to Blog
+          &larr; {tc("backToBlog")}
         </Link>
 
         <article>

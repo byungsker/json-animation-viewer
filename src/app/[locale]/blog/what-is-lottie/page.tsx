@@ -1,29 +1,37 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import BlogPostJsonLd from "@/components/BlogPostJsonLd";
-import Breadcrumb from "@/components/Breadcrumb";
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
+import BlogPostJsonLd from '@/components/BlogPostJsonLd';
+import Breadcrumb from '@/components/Breadcrumb';
 
-export const metadata: Metadata = {
-  title: "What is Lottie Animation? A Complete Guide - JSON Animation Viewer",
-  description:
-    "Learn everything about Lottie animations: the history behind the format, how JSON-based animations work, why developers prefer Lottie over GIFs, and how to get started.",
-  alternates: {
-    canonical: "/blog/what-is-lottie",
-  },
-  openGraph: {
-    type: "article",
-    publishedTime: "2025-02-20T00:00:00Z",
-  },
-};
+export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
+  const t = await getTranslations({locale, namespace: 'metadata.whatIsLottie'});
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: `/${locale}/blog/what-is-lottie`,
+      languages: { en: '/en/blog/what-is-lottie', ko: '/ko/blog/what-is-lottie' },
+    },
+    openGraph: {
+      type: "article",
+      publishedTime: "2025-02-20T00:00:00Z",
+    },
+  };
+}
 
-export default function WhatIsLottiePage() {
+export default async function WhatIsLottiePage({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
+  setRequestLocale(locale);
+  const tc = await getTranslations('common');
+
   return (
     <div className="min-h-screen bg-gray-900">
       <div className="max-w-3xl mx-auto px-6 py-16">
         <Breadcrumb
           items={[
-            { name: "Home", href: "/" },
-            { name: "Blog", href: "/blog" },
+            { name: locale === "ko" ? "홈" : "Home", href: "/" },
+            { name: locale === "ko" ? "블로그" : "Blog", href: "/blog" },
             { name: "What is Lottie Animation?", href: "/blog/what-is-lottie" },
           ]}
         />
@@ -33,13 +41,14 @@ export default function WhatIsLottiePage() {
           datePublished="2025-02-20T00:00:00Z"
           dateModified="2025-02-20T00:00:00Z"
           slug="what-is-lottie"
+          locale={locale}
         />
 
         <Link
           href="/blog"
           className="text-blue-400 hover:text-blue-300 text-sm mb-8 inline-block transition-colors"
         >
-          &larr; Back to Blog
+          &larr; {tc("backToBlog")}
         </Link>
 
         <article>

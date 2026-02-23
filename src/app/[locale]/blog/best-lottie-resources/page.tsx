@@ -1,29 +1,37 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import BlogPostJsonLd from "@/components/BlogPostJsonLd";
-import Breadcrumb from "@/components/Breadcrumb";
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
+import BlogPostJsonLd from '@/components/BlogPostJsonLd';
+import Breadcrumb from '@/components/Breadcrumb';
 
-export const metadata: Metadata = {
-  title: "Best Lottie Animation Resources for Developers - JSON Animation Viewer",
-  description:
-    "A curated list of the best Lottie animation resources: free animation libraries, design tools, player libraries, optimization tools, and community platforms for developers.",
-  alternates: {
-    canonical: "/blog/best-lottie-resources",
-  },
-  openGraph: {
-    type: "article",
-    publishedTime: "2025-02-12T00:00:00Z",
-  },
-};
+export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
+  const t = await getTranslations({locale, namespace: 'metadata.bestLottieResources'});
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: `/${locale}/blog/best-lottie-resources`,
+      languages: { en: '/en/blog/best-lottie-resources', ko: '/ko/blog/best-lottie-resources' },
+    },
+    openGraph: {
+      type: "article",
+      publishedTime: "2025-02-12T00:00:00Z",
+    },
+  };
+}
 
-export default function BestLottieResourcesPage() {
+export default async function BestLottieResourcesPage({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
+  setRequestLocale(locale);
+  const tc = await getTranslations('common');
+
   return (
     <div className="min-h-screen bg-gray-900">
       <div className="max-w-3xl mx-auto px-6 py-16">
         <Breadcrumb
           items={[
-            { name: "Home", href: "/" },
-            { name: "Blog", href: "/blog" },
+            { name: locale === "ko" ? "홈" : "Home", href: "/" },
+            { name: locale === "ko" ? "블로그" : "Blog", href: "/blog" },
             { name: "Best Lottie Resources", href: "/blog/best-lottie-resources" },
           ]}
         />
@@ -33,13 +41,14 @@ export default function BestLottieResourcesPage() {
           datePublished="2025-02-12T00:00:00Z"
           dateModified="2025-02-12T00:00:00Z"
           slug="best-lottie-resources"
+          locale={locale}
         />
 
         <Link
           href="/blog"
           className="text-blue-400 hover:text-blue-300 text-sm mb-8 inline-block transition-colors"
         >
-          &larr; Back to Blog
+          &larr; {tc("backToBlog")}
         </Link>
 
         <article>

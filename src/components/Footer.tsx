@@ -1,62 +1,64 @@
-import Link from "next/link";
+"use client";
+
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export default function Footer() {
+  const t = useTranslations("footer");
+
   return (
     <footer className="w-full border-t border-gray-800 bg-gray-900 mt-auto">
       <div className="max-w-5xl mx-auto px-6 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Brand */}
           <div>
             <h3 className="text-white font-bold text-lg mb-3">JSON Animation Viewer</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
-              A free online tool to preview Lottie JSON animations instantly. Drag and drop your files — no uploads, no databases, completely private.
+              {t("description")}
             </p>
           </div>
 
-          {/* Navigation */}
           <div>
-            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-3">Pages</h4>
+            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-3">{t("pages")}</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="/" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  Home
+                  {t("home")}
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  About
+                  {t("about")}
                 </Link>
               </li>
               <li>
                 <Link href="/guide" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  How to Use
+                  {t("howToUse")}
                 </Link>
               </li>
               <li>
                 <Link href="/faq" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  FAQ
+                  {t("faq")}
                 </Link>
               </li>
               <li>
                 <Link href="/blog" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  Blog
+                  {t("blog")}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Legal */}
           <div>
-            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-3">Legal</h4>
+            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-3">{t("legal")}</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  Privacy Policy
+                  {t("privacyPolicy")}
                 </Link>
               </li>
               <li>
                 <Link href="/terms" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  Terms of Service
+                  {t("termsOfService")}
                 </Link>
               </li>
             </ul>
@@ -74,7 +76,7 @@ export default function Footer() {
             >
               lbo728
             </a>
-            . All rights reserved.
+            . {t("copyright")}
           </p>
         </div>
       </div>

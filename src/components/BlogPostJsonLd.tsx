@@ -4,6 +4,7 @@ interface BlogPostJsonLdProps {
   datePublished: string;
   dateModified: string;
   slug: string;
+  locale: string;
 }
 
 export default function BlogPostJsonLd({
@@ -12,8 +13,9 @@ export default function BlogPostJsonLd({
   datePublished,
   dateModified,
   slug,
+  locale,
 }: BlogPostJsonLdProps) {
-  const url = `https://json-animation-viewer.vercel.app/blog/${slug}`;
+  const url = `https://json-animation-viewer.vercel.app/${locale}/blog/${slug}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
