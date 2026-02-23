@@ -15,8 +15,9 @@ export default function JsonLd() {
       availability: "https://schema.org/InStock",
     },
     author: {
-      "@type": "Organization",
-      name: "JSON Animation Viewer Team",
+      "@type": "Person",
+      name: "lbo728",
+      url: "https://github.com/lbo728",
     },
     screenshot: "https://json-animation-viewer.vercel.app/og-image.png",
     softwareVersion: "1.0",

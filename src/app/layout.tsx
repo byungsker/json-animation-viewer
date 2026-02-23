@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     "Easily preview your JSON animations with our user-friendly JSON Animation Viewer. Drag and drop your JSON files to see them in action instantly!",
   keywords:
     "JSON, 애니메이션, 뷰어, json animation viewer, json viewer, json 미리보기, Lottie, 미리보기, JSON 미리보기, lottie viewer, animation preview",
-  authors: [{ name: "JSON Animation Viewer Team" }],
-  creator: "JSON Animation Viewer Team",
+  authors: [{ name: "lbo728", url: "https://github.com/lbo728" }],
+  creator: "lbo728",
   publisher: "JSON Animation Viewer",
   formatDetection: {
     email: false,
