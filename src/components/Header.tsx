@@ -1,14 +1,22 @@
-import Link from "next/link";
+"use client";
 
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/guide", label: "Guide" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/blog", label: "Blog" },
-];
+import { useTranslations, useLocale } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
 
 export default function Header() {
+  const t = useTranslations("nav");
+  const tHeader = useTranslations("header");
+  const locale = useLocale();
+  const pathname = usePathname();
+
+  const navLinks = [
+    { href: "/" as const, label: t("home") },
+    { href: "/about" as const, label: t("about") },
+    { href: "/guide" as const, label: t("guide") },
+    { href: "/faq" as const, label: t("faq") },
+    { href: "/blog" as const, label: t("blog") },
+  ];
+
   return (
     <header className="w-full border-b border-gray-800 bg-gray-900">
       <nav className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -16,24 +24,32 @@ export default function Header() {
           href="/"
           className="text-white font-bold text-lg hover:text-gray-300 transition-colors"
         >
-          JSON Animation Viewer
+          {tHeader("siteName")}
         </Link>
 
-        {/* Desktop navigation */}
-        <ul className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="text-gray-400 hover:text-white text-sm transition-colors"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className="hidden md:flex items-center gap-6">
+          <ul className="flex items-center gap-6">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="text-gray-400 hover:text-white text-sm transition-colors"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-        {/* Mobile navigation - CSS-only hamburger */}
+          <Link
+            href={pathname}
+            locale={locale === "en" ? "ko" : "en"}
+            className="text-gray-400 hover:text-white text-sm transition-colors border border-gray-700 rounded px-2 py-1"
+          >
+            {locale === "en" ? "한국어" : "English"}
+          </Link>
+        </div>
+
         <details className="md:hidden group relative">
           <summary className="list-none cursor-pointer p-2 text-gray-400 hover:text-white transition-colors">
             <svg
@@ -76,6 +92,15 @@ export default function Header() {
                 </Link>
               </li>
             ))}
+            <li className="border-t border-gray-700 mt-2 pt-2">
+              <Link
+                href={pathname}
+                locale={locale === "en" ? "ko" : "en"}
+                className="block px-4 py-2 text-gray-400 hover:text-white hover:bg-gray-800 text-sm transition-colors"
+              >
+                {locale === "en" ? "한국어" : "English"}
+              </Link>
+            </li>
           </ul>
         </details>
       </nav>
