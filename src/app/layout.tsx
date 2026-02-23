@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import GoogleAdSense from "@/components/GoogleAdsense";
 import JsonLd from "./JsonLd";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,8 +30,8 @@ export const metadata: Metadata = {
     "Easily preview your JSON animations with our user-friendly JSON Animation Viewer. Drag and drop your JSON files to see them in action instantly!",
   keywords:
     "JSON, 애니메이션, 뷰어, json animation viewer, json viewer, json 미리보기, Lottie, 미리보기, JSON 미리보기, lottie viewer, animation preview",
-  authors: [{ name: "JSON Animation Viewer Team" }],
-  creator: "JSON Animation Viewer Team",
+  authors: [{ name: "lbo728", url: "https://github.com/lbo728" }],
+  creator: "lbo728",
   publisher: "JSON Animation Viewer",
   formatDetection: {
     email: false,
@@ -75,9 +76,6 @@ export const metadata: Metadata = {
     description: "Easily preview your JSON animations with our user-friendly JSON Animation Viewer.",
     images: ["/og-image.png"],
   },
-  verification: {
-    google: "google-site-verification-code",
-  },
   category: "technology",
 };
 
@@ -89,7 +87,10 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {children}
+        <div className="flex flex-col min-h-screen">
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
         <GoogleAdSense />
         <JsonLd />
       </body>
