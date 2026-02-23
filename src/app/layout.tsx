@@ -1,9 +1,9 @@
 import "./globals.css";
-
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import GoogleAdSense from "@/components/GoogleAdsense";
 import JsonLd from "./JsonLd";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const geistSans = Geist({
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   description:
     "Easily preview your JSON animations with our user-friendly JSON Animation Viewer. Drag and drop your JSON files to see them in action instantly!",
   keywords:
-    "JSON, 애니메이션, 뷰어, json animation viewer, json viewer, json 미리보기, Lottie, 미리보기, JSON 미리보기, lottie viewer, animation preview",
+    "JSON, json animation viewer, json viewer, Lottie, lottie viewer, animation preview, lottie json preview, json animation preview tool",
   authors: [{ name: "lbo728", url: "https://github.com/lbo728" }],
   creator: "lbo728",
   publisher: "JSON Animation Viewer",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://json-animation-viewer.vercel.app",
     siteName: "JSON Animation Viewer",
-    locale: "ko_KR",
+    locale: "en_US",
     images: [
       {
         url: "/og-image.png",
@@ -85,9 +85,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
+    <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div className="flex flex-col min-h-screen">
+          <Header />
           <main className="flex-1">{children}</main>
           <Footer />
         </div>

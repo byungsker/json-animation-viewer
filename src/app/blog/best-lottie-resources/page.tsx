@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import BlogPostJsonLd from "@/components/BlogPostJsonLd";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export const metadata: Metadata = {
   title: "Best Lottie Animation Resources for Developers - JSON Animation Viewer",
@@ -8,12 +10,31 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/blog/best-lottie-resources",
   },
+  openGraph: {
+    type: "article",
+    publishedTime: "2025-02-12T00:00:00Z",
+  },
 };
 
 export default function BestLottieResourcesPage() {
   return (
     <div className="min-h-screen bg-gray-900">
       <div className="max-w-3xl mx-auto px-6 py-16">
+        <Breadcrumb
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Blog", href: "/blog" },
+            { name: "Best Lottie Resources", href: "/blog/best-lottie-resources" },
+          ]}
+        />
+        <BlogPostJsonLd
+          title="Best Lottie Animation Resources for Developers"
+          description="A curated list of the best Lottie animation resources: free animation libraries, design tools, player libraries, optimization tools, and community platforms for developers."
+          datePublished="2025-02-12T00:00:00Z"
+          dateModified="2025-02-12T00:00:00Z"
+          slug="best-lottie-resources"
+        />
+
         <Link
           href="/blog"
           className="text-blue-400 hover:text-blue-300 text-sm mb-8 inline-block transition-colors"
@@ -22,7 +43,7 @@ export default function BestLottieResourcesPage() {
         </Link>
 
         <article>
-          <time className="text-sm text-gray-500 block mb-4">February 12, 2025</time>
+          <time dateTime="2025-02-12" className="text-sm text-gray-500 block mb-4">February 12, 2025</time>
           <h1 className="text-4xl font-bold text-white mb-6">
             Best Lottie Animation Resources for Developers
           </h1>
@@ -429,6 +450,22 @@ export default function BestLottieResourcesPage() {
             </section>
           </div>
         </article>
+
+        <aside className="mt-12 pt-8 border-t border-gray-700">
+          <h2 className="text-lg font-semibold text-white mb-4">Related Posts</h2>
+          <ul className="space-y-3">
+            <li>
+              <Link href="/blog/how-to-create-lottie-animation" className="text-blue-400 hover:text-blue-300 transition-colors">
+                How to Create Lottie Animations: Step-by-Step
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog/what-is-lottie" className="text-blue-400 hover:text-blue-300 transition-colors">
+                What is Lottie Animation? A Complete Guide
+              </Link>
+            </li>
+          </ul>
+        </aside>
       </div>
     </div>
   );

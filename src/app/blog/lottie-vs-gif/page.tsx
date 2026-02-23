@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import BlogPostJsonLd from "@/components/BlogPostJsonLd";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export const metadata: Metadata = {
   title: "Lottie vs GIF: Why Lottie Animations Are Better - JSON Animation Viewer",
@@ -8,12 +10,31 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/blog/lottie-vs-gif",
   },
+  openGraph: {
+    type: "article",
+    publishedTime: "2025-02-15T00:00:00Z",
+  },
 };
 
 export default function LottieVsGifPage() {
   return (
     <div className="min-h-screen bg-gray-900">
       <div className="max-w-3xl mx-auto px-6 py-16">
+        <Breadcrumb
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Blog", href: "/blog" },
+            { name: "Lottie vs GIF", href: "/blog/lottie-vs-gif" },
+          ]}
+        />
+        <BlogPostJsonLd
+          title="Lottie vs GIF: Why Lottie Animations Are Better"
+          description="A detailed comparison of Lottie and GIF animation formats. Compare file sizes, rendering quality, performance, interactivity, and developer experience with real-world benchmarks."
+          datePublished="2025-02-15T00:00:00Z"
+          dateModified="2025-02-15T00:00:00Z"
+          slug="lottie-vs-gif"
+        />
+
         <Link
           href="/blog"
           className="text-blue-400 hover:text-blue-300 text-sm mb-8 inline-block transition-colors"
@@ -22,7 +43,7 @@ export default function LottieVsGifPage() {
         </Link>
 
         <article>
-          <time className="text-sm text-gray-500 block mb-4">February 15, 2025</time>
+          <time dateTime="2025-02-15" className="text-sm text-gray-500 block mb-4">February 15, 2025</time>
           <h1 className="text-4xl font-bold text-white mb-6">
             Lottie vs GIF: Why Lottie Animations Are Better
           </h1>
@@ -349,6 +370,22 @@ export default function LottieVsGifPage() {
             </section>
           </div>
         </article>
+
+        <aside className="mt-12 pt-8 border-t border-gray-700">
+          <h2 className="text-lg font-semibold text-white mb-4">Related Posts</h2>
+          <ul className="space-y-3">
+            <li>
+              <Link href="/blog/what-is-lottie" className="text-blue-400 hover:text-blue-300 transition-colors">
+                What is Lottie Animation? A Complete Guide
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog/best-lottie-resources" className="text-blue-400 hover:text-blue-300 transition-colors">
+                Best Lottie Animation Resources for Developers
+              </Link>
+            </li>
+          </ul>
+        </aside>
       </div>
     </div>
   );
