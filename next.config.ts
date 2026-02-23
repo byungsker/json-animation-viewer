@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
   // Enable compression
   compress: true,
   // Generate source maps (even in production)
-  productionBrowserSourceMaps: true,
+  productionBrowserSourceMaps: false,
   // React optimization
   reactStrictMode: true,
 };

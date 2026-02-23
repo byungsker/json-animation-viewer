@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export const metadata: Metadata = {
   title: "How to Use JSON Animation Viewer - Step-by-Step Guide",
@@ -14,6 +15,7 @@ export default function GuidePage() {
   return (
     <div className="min-h-screen bg-gray-900">
       <div className="max-w-3xl mx-auto px-6 py-16">
+        <Breadcrumb items={[{ name: "Home", href: "/" }, { name: "How to Use", href: "/guide" }]} />
         <Link
           href="/"
           className="text-blue-400 hover:text-blue-300 text-sm mb-8 inline-block transition-colors"

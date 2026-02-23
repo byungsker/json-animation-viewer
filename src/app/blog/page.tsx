@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export const metadata: Metadata = {
   title: "Blog - JSON Animation Viewer",
@@ -52,6 +53,7 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen bg-gray-900">
       <div className="max-w-3xl mx-auto px-6 py-16">
+        <Breadcrumb items={[{ name: "Home", href: "/" }, { name: "Blog", href: "/blog" }]} />
         <Link
           href="/"
           className="text-blue-400 hover:text-blue-300 text-sm mb-8 inline-block transition-colors"
@@ -70,7 +72,7 @@ export default function BlogPage() {
               key={post.slug}
               className="border border-gray-700 rounded-lg p-6 hover:border-gray-500 transition-colors"
             >
-              <time className="text-sm text-gray-500 block mb-2">{post.date}</time>
+              <time className="text-sm text-gray-500 block mb-2" dateTime={post.date}>{post.date}</time>
               <h2 className="text-xl font-semibold mb-2">
                 <Link
                   href={`/blog/${post.slug}`}
