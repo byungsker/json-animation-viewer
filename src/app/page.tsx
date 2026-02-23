@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, Suspense } from "react";
+import Link from "next/link";
 import type { AnimationItem, LottiePlayer } from "lottie-web";
 
 interface AnimationData {
@@ -291,6 +292,41 @@ export default function Home() {
           <p>
             Lottie animations are widely used across iOS, Android, React Native, and web platforms. Major companies including Airbnb, Google, Uber, and Disney use Lottie animations to create engaging user interfaces and micro-interactions.
           </p>
+        </div>
+      </section>
+
+      <section className="w-full max-w-5xl mx-auto px-6 py-16 border-t border-gray-800">
+        <h2 className="text-3xl font-bold text-white text-center mb-8">
+          Learn More
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Link
+            href="/guide"
+            className="block bg-gray-800/50 rounded-lg p-6 border border-gray-700 hover:border-blue-500/50 transition-colors"
+          >
+            <h3 className="text-lg font-semibold text-white mb-2">How to Use</h3>
+            <p className="text-gray-400 text-sm">
+              Step-by-step guide to previewing your Lottie animations with JSON Animation Viewer.
+            </p>
+          </Link>
+          <Link
+            href="/blog"
+            className="block bg-gray-800/50 rounded-lg p-6 border border-gray-700 hover:border-blue-500/50 transition-colors"
+          >
+            <h3 className="text-lg font-semibold text-white mb-2">Blog</h3>
+            <p className="text-gray-400 text-sm">
+              Tutorials and articles about Lottie animations, workflows, and best practices.
+            </p>
+          </Link>
+          <Link
+            href="/about"
+            className="block bg-gray-800/50 rounded-lg p-6 border border-gray-700 hover:border-blue-500/50 transition-colors"
+          >
+            <h3 className="text-lg font-semibold text-white mb-2">About</h3>
+            <p className="text-gray-400 text-sm">
+              Learn about JSON Animation Viewer, our tech stack, and why we built this tool.
+            </p>
+          </Link>
         </div>
       </section>
     </div>

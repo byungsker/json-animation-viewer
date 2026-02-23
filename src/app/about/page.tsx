@@ -165,6 +165,30 @@ export default function AboutPage() {
               or reach out through the repository.
             </p>
           </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-white mb-3">Explore More</h2>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>
+                <Link href="/guide" className="text-blue-400 hover:underline">
+                  How to Use JSON Animation Viewer
+                </Link>{" "}
+                — Step-by-step guide to previewing your animations.
+              </li>
+              <li>
+                <Link href="/blog" className="text-blue-400 hover:underline">
+                  Blog
+                </Link>{" "}
+                — Tutorials on Lottie animations, workflows, and best practices.
+              </li>
+              <li>
+                <Link href="/faq" className="text-blue-400 hover:underline">
+                  FAQ
+                </Link>{" "}
+                — Answers to frequently asked questions.
+              </li>
+            </ul>
+          </section>
         </div>
       </div>
     </div>
