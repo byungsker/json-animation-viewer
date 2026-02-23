@@ -1,28 +1,58 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
+import BlogPostJsonLd from '@/components/BlogPostJsonLd';
+import Breadcrumb from '@/components/Breadcrumb';
 
-export const metadata: Metadata = {
-  title: "JSON Animation Tutorial: From After Effects to Web - JSON Animation Viewer",
-  description:
-    "A practical tutorial on creating Lottie JSON animations. Learn the complete workflow from designing in After Effects to exporting with Bodymovin and rendering on the web.",
-  alternates: {
-    canonical: "/blog/json-animation-tutorial",
-  },
-};
+export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
+  const t = await getTranslations({locale, namespace: 'metadata.jsonAnimationTutorial'});
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: `/${locale}/blog/json-animation-tutorial`,
+      languages: { en: '/en/blog/json-animation-tutorial', ko: '/ko/blog/json-animation-tutorial' },
+    },
+    openGraph: {
+      type: "article",
+      publishedTime: "2025-02-18T00:00:00Z",
+    },
+  };
+}
 
-export default function JsonAnimationTutorialPage() {
+export default async function JsonAnimationTutorialPage({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
+  setRequestLocale(locale);
+  const tc = await getTranslations('common');
+
   return (
     <div className="min-h-screen bg-gray-900">
       <div className="max-w-3xl mx-auto px-6 py-16">
+        <Breadcrumb
+          items={[
+            { name: locale === "ko" ? "홈" : "Home", href: "/" },
+            { name: locale === "ko" ? "블로그" : "Blog", href: "/blog" },
+            { name: "JSON Animation Tutorial", href: "/blog/json-animation-tutorial" },
+          ]}
+        />
+        <BlogPostJsonLd
+          title="JSON Animation Tutorial: From After Effects to Web"
+          description="A practical tutorial on creating Lottie JSON animations. Learn the complete workflow from designing in After Effects to exporting with Bodymovin and rendering on the web."
+          datePublished="2025-02-18T00:00:00Z"
+          dateModified="2025-02-18T00:00:00Z"
+          slug="json-animation-tutorial"
+          locale={locale}
+        />
+
         <Link
           href="/blog"
           className="text-blue-400 hover:text-blue-300 text-sm mb-8 inline-block transition-colors"
         >
-          &larr; Back to Blog
+          &larr; {tc("backToBlog")}
         </Link>
 
         <article>
-          <time className="text-sm text-gray-500 block mb-4">February 18, 2025</time>
+          <time dateTime="2025-02-18" className="text-sm text-gray-500 block mb-4">February 18, 2025</time>
           <h1 className="text-4xl font-bold text-white mb-6">
             JSON Animation Tutorial: From After Effects to Web
           </h1>
@@ -414,6 +444,22 @@ function MyComponent() {
             </section>
           </div>
         </article>
+
+        <aside className="mt-12 pt-8 border-t border-gray-700">
+          <h2 className="text-lg font-semibold text-white mb-4">Related Posts</h2>
+          <ul className="space-y-3">
+            <li>
+              <Link href="/blog/what-is-lottie" className="text-blue-400 hover:text-blue-300 transition-colors">
+                What is Lottie Animation? A Complete Guide
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog/how-to-create-lottie-animation" className="text-blue-400 hover:text-blue-300 transition-colors">
+                How to Create Lottie Animations: Step-by-Step
+              </Link>
+            </li>
+          </ul>
+        </aside>
       </div>
     </div>
   );

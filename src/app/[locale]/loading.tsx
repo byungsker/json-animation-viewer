@@ -7,7 +7,7 @@ export default function Loading() {
         <div className="h-3 w-32 bg-gray-700 rounded-lg mb-8"></div>
 
         <div className="h-96 w-full max-w-md bg-gray-800 rounded-lg mb-4 flex items-center justify-center">
-          <div className="text-gray-400">Loading...</div>
+          <div className="text-gray-400"></div>
         </div>
 
         <div className="h-4 w-40 bg-gray-700 rounded-lg"></div>

@@ -1,28 +1,58 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
+import BlogPostJsonLd from '@/components/BlogPostJsonLd';
+import Breadcrumb from '@/components/Breadcrumb';
 
-export const metadata: Metadata = {
-  title: "How to Create Lottie Animations: Step-by-Step - JSON Animation Viewer",
-  description:
-    "A beginner-friendly guide to creating Lottie animations from scratch. Learn design principles, tool setup, animation techniques, export settings, and web implementation.",
-  alternates: {
-    canonical: "/blog/how-to-create-lottie-animation",
-  },
-};
+export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
+  const t = await getTranslations({locale, namespace: 'metadata.howToCreateLottie'});
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: `/${locale}/blog/how-to-create-lottie-animation`,
+      languages: { en: '/en/blog/how-to-create-lottie-animation', ko: '/ko/blog/how-to-create-lottie-animation' },
+    },
+    openGraph: {
+      type: "article",
+      publishedTime: "2025-02-10T00:00:00Z",
+    },
+  };
+}
 
-export default function HowToCreateLottieAnimationPage() {
+export default async function HowToCreateLottieAnimationPage({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
+  setRequestLocale(locale);
+  const tc = await getTranslations('common');
+
   return (
     <div className="min-h-screen bg-gray-900">
       <div className="max-w-3xl mx-auto px-6 py-16">
+        <Breadcrumb
+          items={[
+            { name: locale === "ko" ? "홈" : "Home", href: "/" },
+            { name: locale === "ko" ? "블로그" : "Blog", href: "/blog" },
+            { name: "How to Create Lottie Animations", href: "/blog/how-to-create-lottie-animation" },
+          ]}
+        />
+        <BlogPostJsonLd
+          title="How to Create Lottie Animations: Step-by-Step"
+          description="A beginner-friendly guide to creating Lottie animations from scratch. Learn design principles, tool setup, animation techniques, export settings, and web implementation."
+          datePublished="2025-02-10T00:00:00Z"
+          dateModified="2025-02-10T00:00:00Z"
+          slug="how-to-create-lottie-animation"
+          locale={locale}
+        />
+
         <Link
           href="/blog"
           className="text-blue-400 hover:text-blue-300 text-sm mb-8 inline-block transition-colors"
         >
-          &larr; Back to Blog
+          &larr; {tc("backToBlog")}
         </Link>
 
         <article>
-          <time className="text-sm text-gray-500 block mb-4">February 10, 2025</time>
+          <time dateTime="2025-02-10" className="text-sm text-gray-500 block mb-4">February 10, 2025</time>
           <h1 className="text-4xl font-bold text-white mb-6">
             How to Create Lottie Animations: Step-by-Step
           </h1>
@@ -473,6 +503,22 @@ function LoadingSpinner() {
             </section>
           </div>
         </article>
+
+        <aside className="mt-12 pt-8 border-t border-gray-700">
+          <h2 className="text-lg font-semibold text-white mb-4">Related Posts</h2>
+          <ul className="space-y-3">
+            <li>
+              <Link href="/blog/json-animation-tutorial" className="text-blue-400 hover:text-blue-300 transition-colors">
+                JSON Animation Tutorial: From After Effects to Web
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog/best-lottie-resources" className="text-blue-400 hover:text-blue-300 transition-colors">
+                Best Lottie Animation Resources for Developers
+              </Link>
+            </li>
+          </ul>
+        </aside>
       </div>
     </div>
   );
