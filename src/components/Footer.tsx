@@ -65,7 +65,16 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 mt-8 pt-6 text-center">
           <p className="text-gray-500 text-xs">
-            &copy; {new Date().getFullYear()} JSON Animation Viewer. All rights reserved.
+            &copy; {new Date().getFullYear()}{" "}
+            <a
+              href="https://github.com/lbo728"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              lbo728
+            </a>
+            . All rights reserved.
           </p>
         </div>
       </div>
