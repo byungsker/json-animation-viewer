@@ -27,6 +27,17 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: false,
   // React optimization
   reactStrictMode: true,
+  // Redirect vercel.app subdomain to custom domain for SEO
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "json-animation-viewer.vercel.app" }],
+        destination: "https://json-animation-viewer.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);

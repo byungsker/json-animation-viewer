@@ -47,7 +47,7 @@ export default async function PrivacyPage({
             <p>
               {t.rich("s1Desc", {
                 link: (chunks) => (
-                  <a href="https://json-animation-viewer.vercel.app" className="text-blue-400 hover:underline">
+                  <a href="https://json-animation-viewer.com" className="text-blue-400 hover:underline">
                     {chunks}
                   </a>
                 ),

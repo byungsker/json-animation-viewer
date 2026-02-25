@@ -3,7 +3,7 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     name: "JSON Animation Viewer",
-    url: "https://json-animation-viewer.vercel.app",
+    url: "https://json-animation-viewer.com",
     description:
       "Easily preview your JSON animations with our user-friendly JSON Animation Viewer. Drag and drop your JSON files to see them in action instantly!",
     applicationCategory: "DeveloperApplication",
@@ -19,7 +19,7 @@ export default function JsonLd() {
       name: "lbo728",
       url: "https://github.com/lbo728",
     },
-    screenshot: "https://json-animation-viewer.vercel.app/og-image.png",
+    screenshot: "https://json-animation-viewer.com/og-image.png",
     softwareVersion: "1.0",
   };
 
