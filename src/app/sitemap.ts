@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const BASE_URL = "https://json-animation-viewer.vercel.app";
+const BASE_URL = "https://json-animation-viewer.com";
 const locales = ["en", "ko"] as const;
 
 type SitemapEntry = {

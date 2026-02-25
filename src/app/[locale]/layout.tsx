@@ -53,7 +53,7 @@ export async function generateMetadata({
       telephone: false,
       address: false,
     },
-    metadataBase: new URL("https://json-animation-viewer.vercel.app"),
+    metadataBase: new URL("https://json-animation-viewer.com"),
     alternates: {
       canonical: `/${locale}`,
       languages: {
@@ -76,7 +76,7 @@ export async function generateMetadata({
       title: t("title"),
       description: t("description"),
       type: "website",
-      url: `https://json-animation-viewer.vercel.app/${locale}`,
+      url: `https://json-animation-viewer.com/${locale}`,
       siteName: "JSON Animation Viewer",
       locale: ogLocale,
       alternateLocale: alternateLocale,
