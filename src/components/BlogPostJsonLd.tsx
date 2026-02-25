@@ -15,7 +15,7 @@ export default function BlogPostJsonLd({
   slug,
   locale,
 }: BlogPostJsonLdProps) {
-  const url = `https://json-animation-viewer.vercel.app/${locale}/blog/${slug}`;
+  const url = `https://json-animation-viewer.com/${locale}/blog/${slug}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -37,7 +37,7 @@ export default function BlogPostJsonLd({
       "@type": "WebPage",
       "@id": url,
     },
-    image: "https://json-animation-viewer.vercel.app/og-image.png",
+    image: "https://json-animation-viewer.com/og-image.png",
   };
 
   return (

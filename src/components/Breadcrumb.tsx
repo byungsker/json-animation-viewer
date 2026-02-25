@@ -17,7 +17,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: `https://json-animation-viewer.vercel.app${item.href}`,
+      item: `https://json-animation-viewer.com${item.href}`,
     })),
   };
 
