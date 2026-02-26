@@ -144,7 +144,7 @@ export default async function PrivacyPage({
               {t.rich("s10Desc", {
                 link: (chunks) => (
                   <a
-                    href="https://github.com/lbo728/json-animation-viewer"
+                    href="https://github.com/byungsker/json-animation-viewer"
                     className="text-blue-400 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"

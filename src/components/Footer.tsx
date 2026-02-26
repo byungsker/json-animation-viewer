@@ -69,12 +69,12 @@ export default function Footer() {
           <p className="text-gray-500 text-xs">
             &copy; {new Date().getFullYear()}{" "}
             <a
-              href="https://github.com/lbo728"
+              href="https://github.com/byungsker"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors"
             >
-              lbo728
+              byungsker
             </a>
             . {t("copyright")}
           </p>

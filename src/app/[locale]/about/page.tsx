@@ -154,7 +154,7 @@ export default async function AboutPage({
               {t.rich("openSourceDesc", {
                 link: (chunks) => (
                   <a
-                    href="https://github.com/lbo728/json-animation-viewer"
+                    href="https://github.com/byungsker/json-animation-viewer"
                     className="text-blue-400 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -174,7 +174,7 @@ export default async function AboutPage({
               {t.rich("contactDesc", {
                 link: (chunks) => (
                   <a
-                    href="https://github.com/lbo728/json-animation-viewer/issues"
+                    href="https://github.com/byungsker/json-animation-viewer/issues"
                     className="text-blue-400 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"

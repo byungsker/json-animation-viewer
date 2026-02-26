@@ -45,8 +45,8 @@ export async function generateMetadata({
     title: t("title"),
     description: t("description"),
     keywords: t("keywords"),
-    authors: [{ name: "lbo728", url: "https://github.com/lbo728" }],
-    creator: "lbo728",
+    authors: [{ name: "byungsker", url: "https://github.com/byungsker" }],
+    creator: "byungsker",
     publisher: "JSON Animation Viewer",
     formatDetection: {
       email: false,

@@ -16,8 +16,8 @@ export default function JsonLd() {
     },
     author: {
       "@type": "Person",
-      name: "lbo728",
-      url: "https://github.com/lbo728",
+      name: "byungsker",
+      url: "https://github.com/byungsker",
     },
     screenshot: "https://json-animation-viewer.com/og-image.png",
     softwareVersion: "1.0",

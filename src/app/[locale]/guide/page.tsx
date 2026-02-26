@@ -174,7 +174,7 @@ export default async function GuidePage({
                 ),
                 githubLink: (chunks) => (
                   <a
-                    href="https://github.com/lbo728/json-animation-viewer/issues"
+                    href="https://github.com/byungsker/json-animation-viewer/issues"
                     className="text-blue-400 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"

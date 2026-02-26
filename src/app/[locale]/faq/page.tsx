@@ -187,7 +187,7 @@ export default async function FAQPage({
                 {t.rich("q9Answer", {
                   link: (chunks) => (
                     <a
-                      href="https://github.com/lbo728/json-animation-viewer"
+                      href="https://github.com/byungsker/json-animation-viewer"
                       className="text-blue-400 hover:underline"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -242,7 +242,7 @@ export default async function FAQPage({
                 {t.rich("q12Answer", {
                   link: (chunks) => (
                     <a
-                      href="https://github.com/lbo728/json-animation-viewer/issues"
+                      href="https://github.com/byungsker/json-animation-viewer/issues"
                       className="text-blue-400 hover:underline"
                       target="_blank"
                       rel="noopener noreferrer"

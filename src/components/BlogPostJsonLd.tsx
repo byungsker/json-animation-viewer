@@ -26,8 +26,8 @@ export default function BlogPostJsonLd({
     dateModified,
     author: {
       "@type": "Person",
-      name: "lbo728",
-      url: "https://github.com/lbo728",
+      name: "byungsker",
+      url: "https://github.com/byungsker",
     },
     publisher: {
       "@type": "Organization",
