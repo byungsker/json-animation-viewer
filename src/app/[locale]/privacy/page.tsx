@@ -12,8 +12,8 @@ export async function generateMetadata({
     title: t("title"),
     description: t("description"),
     alternates: {
-      canonical: `/${locale}/privacy`,
-      languages: { en: "/en/privacy", ko: "/ko/privacy" },
+      canonical: locale === "en" ? "/privacy" : `/${locale}/privacy`,
+      languages: { en: "/privacy", ko: "/ko/privacy" },
     },
   };
 }

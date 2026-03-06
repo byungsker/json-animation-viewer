@@ -55,9 +55,9 @@ export async function generateMetadata({
     },
     metadataBase: new URL("https://json-animation-viewer.com"),
     alternates: {
-      canonical: `/${locale}`,
+      canonical: locale === "en" ? "/" : `/${locale}`,
       languages: {
-        en: "/en",
+        en: "/",
         ko: "/ko",
       },
     },

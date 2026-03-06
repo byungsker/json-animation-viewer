@@ -10,8 +10,8 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: `/${locale}/blog/lottie-vs-gif`,
-      languages: { en: '/en/blog/lottie-vs-gif', ko: '/ko/blog/lottie-vs-gif' },
+      canonical: locale === 'en' ? '/blog/lottie-vs-gif' : `/${locale}/blog/lottie-vs-gif`,
+      languages: { en: '/blog/lottie-vs-gif', ko: '/ko/blog/lottie-vs-gif' },
     },
     openGraph: {
       type: "article",
