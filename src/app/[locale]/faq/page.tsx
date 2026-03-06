@@ -13,8 +13,8 @@ export async function generateMetadata({
     title: t("title"),
     description: t("description"),
     alternates: {
-      canonical: `/${locale}/faq`,
-      languages: { en: "/en/faq", ko: "/ko/faq" },
+      canonical: locale === "en" ? "/faq" : `/${locale}/faq`,
+      languages: { en: "/faq", ko: "/ko/faq" },
     },
   };
 }
