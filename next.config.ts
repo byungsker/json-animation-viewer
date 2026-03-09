@@ -36,6 +36,12 @@ const nextConfig: NextConfig = {
         destination: "https://json-animation-viewer.com/:path*",
         permanent: true,
       },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.json-animation-viewer.com" }],
+        destination: "https://json-animation-viewer.com/:path*",
+        permanent: true,
+      },
     ];
   },
 };
